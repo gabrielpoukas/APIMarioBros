@@ -1,0 +1,316 @@
+/*=======================================================
+  TEMA: SUPER MARIO BROS (LAYOUT FINAL COMPLETO)
+=======================================================*/
+
+/* 1. Estilos Base (Mobile-First) */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 70px; /* Espaço para o footer fixo */
+    background: linear-gradient(to bottom, #79a9ff 0%, #a0c0ff 60%, #e0e0e0 100%); /* Céu Azul */
+    color: #333;
+    min-height: 100vh;
+}
+
+/* 2. Header (Chamativo com Nuvens e Efeito 3D - CONTRASTE CORRIGIDO) */
+header {
+    /* Base: Céu e Fundo Vermelho */
+    background: linear-gradient(to bottom, #e4000f 0%, #a3000b 100%); /* Gradiente Vermelho */
+    color: white;
+    padding: 30px 20px 40px; 
+    text-align: center;
+    border-bottom: 5px solid #005000; /* Linha verde simulando o terreno */
+    position: relative; 
+    overflow: hidden; 
+}
+
+h1 {
+    /* Efeito de 8-bit com BORDA PRETA MAIS FORTE */
+    font-size: 2.2em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 
+        -4px -4px 0 #000, /* Sombra preta mais grossa para alto contraste */
+        4px -4px 0 #000, 
+        -4px 4px 0 #000, 
+        4px 4px 0 #000,
+        6px 6px #ffd700; /* Sombra Amarela (Moeda) */
+    color: white;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 10; 
+}
+
+header p {
+    font-size: 1em;
+    margin-top: 10px;
+    text-shadow: 1px 1px #000;
+    font-style: italic;
+    color: #ffd700; /* CORREÇÃO: Amarelo Moeda para alto contraste com a nuvem branca */
+    position: relative;
+    z-index: 10;
+}
+
+/* EFEITO DE NUVENS (Mantido) */
+header::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 10%;
+    width: 150px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 
+        100px 0 0 white, 
+        130px 0 0 10px white,
+        2px 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+    z-index: 5;
+    transform: rotate(-10deg);
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 5%;
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 
+        -100px 0 0 5px white, 
+        -150px 0 0 0 white,
+        2px 2px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+    z-index: 5;
+    transform: rotate(5deg);
+}
+
+main {
+    padding: 20px 15px;
+}
+
+/* 3. Tijolos e Bloco de Busca */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #c84000; /* Cor do Tijolo */
+    border: 4px solid #8e2e00;
+    border-radius: 8px;
+    box-shadow: 0 5px 0 #8e2e00; /* Sombra 3D */
+}
+
+#character-search {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fff8e8; /* Cor do Pergaminho/Papel */
+    color: #333;
+}
+
+#search-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffd700; /* Amarelo Moeda */
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 3px 0 #ccaa00;
+    transition: background-color 0.1s, box-shadow 0.1s;
+}
+
+#search-button:active {
+    box-shadow: 0 1px 0 #ccaa00;
+    transform: translateY(2px);
+}
+
+/* 4. Ficha Principal (Estilo Bloco de Pergunta - Retangular) */
+#character-detail {
+    background-color: #ffcc66; 
+    padding: 0; 
+    border-radius: 4px;
+    border: 4px solid #e09900;
+    box-shadow: 0 5px 0 #b37300; 
+    margin-bottom: 25px; 
+    overflow: hidden; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+}
+
+/* Imagem Principal (Retangular e sem cortes) */
+#character-detail .char-image {
+    width: 100%; 
+    height: auto; 
+    max-height: 400px; 
+    object-fit: contain; 
+    background-color: #ffcc66; 
+    border-radius: 0; 
+    border: none; 
+    box-shadow: none; 
+    margin-top: 0;
+}
+
+#character-detail .card-content { 
+    padding: 20px;
+}
+
+#character-detail h2 {
+    color: #e4000f; 
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-shadow: 1px 1px white;
+    text-align: center;
+}
+
+.char-info p {
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #fff8e8; 
+    border-left: 5px solid #00a000; 
+    border-radius: 4px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+#error-message {
+    padding: 15px;
+    background-color: #ff9999;
+    color: #8e2e00; 
+    border: 3px solid #e4000f;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 5. Estilos para o Histórico */
+#history-container {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 5px dashed #ffd700; /* Linha Divisória de Moedas */
+}
+
+#history-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-shadow: 1px 1px white;
+}
+
+.history-grid {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+/* Estilo do Card Histórico - Retangular */
+.history-card {
+    background-color: #ffcc66; 
+    padding: 0; 
+    border-radius: 4px;
+    border: 4px solid #e09900;
+    box-shadow: 0 5px 0 #b37300;
+    overflow: hidden; 
+
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch;
+    text-align: left; 
+}
+
+/* Imagem Histórico */
+.history-card .char-image {
+    width: 100%; 
+    height: auto; 
+    max-height: 150px; 
+    object-fit: contain; 
+    background-color: #ffcc66; 
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+.history-card .card-content { 
+    padding: 15px; 
+}
+
+.history-card h3 {
+    color: #e4000f; 
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    text-shadow: 1px 1px white;
+    text-align: center; 
+}
+
+
+/* 6. Footer (Estilo Terreno/Tubo) */
+footer {
+    background-color: #008000; /* Verde Cano */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.85em;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+    border-top: 8px solid #005000;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+footer a {
+    color: #ffd700; /* Moeda */
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+}
+
+/* 7. Media Query para Desktop (Layout de Colunas) */
+@media (min-width: 768px) {
+    main {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+    
+    /* Ficha Principal no Desktop */
+    #character-detail {
+        flex-direction: column; 
+        align-items: stretch;
+    }
+    
+    #character-detail .char-image {
+        max-height: 350px; 
+    }
+
+    /* Layout de Colunas para o Histórico */
+    .history-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px; 
+    }
+    
+    .history-card {
+        width: calc(33.333% - 14px); 
+        min-width: 250px;
+    }
+}
